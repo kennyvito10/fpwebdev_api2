@@ -158,7 +158,7 @@
 				<div class="col-lg-4 icon_box_col">
 					<div class="icon_box">
 						<div class="icon_box_image"><img src="images/icon_3.svg" alt=""></div>
-						<div class="icon_box_title">24h Fast Support</div>
+						<div class="icon_box_title">24h Full Support</div>
 						<div class="icon_box_text">
 							<p>Any Questions? Feel Free to Contact Us Anytime.</p>
 						</div>
