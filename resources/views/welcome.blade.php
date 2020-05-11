@@ -22,7 +22,7 @@
 							<div class="row">
 								<div class="col">
 									<div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
-										<div class="home_slider_title">A new experience</div>
+										<div class="home_slider_title">A </div>
 										<div class="home_slider_subtitle">The Best Place to Buy Your New Phone</div>
 										<div class="button button_light home_button"><a href="#">Browse Phones</a></div>
 									</div>
