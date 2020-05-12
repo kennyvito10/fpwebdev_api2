@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', ['uses' => 'DashboardController@homeIndex']);
 
 
 Route::get('/product', function () {
@@ -30,6 +29,10 @@ Route::get('/signup', function () {
 Route::get('/signin', function () {
     return view('signin');
 });
+
+Route::post('/dashboard', ['uses' => 'signinController@login']);
+Route::get('/dashboard', ['uses' => 'signinController@publicIndex']);
+Route::get('/logout', ['uses' => 'DashboardController@logout']);
 
 Route::get('/aboutus', function () {
     return view('aboutus');

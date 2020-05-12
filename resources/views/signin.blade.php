@@ -49,25 +49,22 @@
 						<div class="section_title">Sign In</div>
 						<div class="section_subtitle">Don't have an account? Sign Up <a href="signup">Here</a></div>
 						<div class="contact_form_container">
-							<form action="#" id="contact_form" class="contact_form">
-								
+						{{ Form::open(array('action' => 'signinController@login')) }}
+						@csrf
 
 								<div class="row">
 									<div class="col-xl-6">
 										<!-- Email -->
 										<label for="contact_name">E-mail*</label>
-										<input type="text" id="email" class="contact_input" required="required">
+										<input type="text" name="email" id="email" class="contact_input" required="required">
 									</div>
 									<div class="col-xl-6 last_name_col">
 										<!-- Password -->
 										<label for="contact_last_name">Password*</label>
-										<input type="password" id="password" class="contact_input" required="required">
+										<input type="password" name="password" id="password" class="contact_input" required="required">
 									</div>
 								</div>
 
-
-
-								
 								<button class="button contact_button"><span>Sign In</span></button>
 							</form>
 						</div>

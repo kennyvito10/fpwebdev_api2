@@ -61,7 +61,7 @@
 									</li>
 									<li><a href="#">About Us</a></li>
 									<li><a href="{{ url('/profile') }}">Profile</a></li>
-									<li><a href="{{ url('/signin') }}"><button class="buttonlogout"><span>Log Out</span></button></a></li>
+									<li><a href="{{ url('/logout') }}"><button class="buttonlogout"><span>Log Out</span></button></a></li>
 								</ul>
 							</nav>
 							<div class="header_extra ml-auto">
