@@ -22,16 +22,21 @@ Route::get('/product', function () {
 });
 
 
-Route::get('/signup', function () {
-    return view('signup');
-});
+// Route::get('/signup', function () {
+//     return view('signup');
+// });
+Route::get('/signup', ['uses' => 'signinController@sessionchecksignup']);
 
-Route::get('/signin', function () {
-    return view('signin');
-});
 
-Route::post('/dashboard', ['uses' => 'signinController@login']);
+// Route::get('/signin', function () {
+//     return view('signin');
+// });
+Route::get('/signin', ['uses' => 'signinController@sessionchecksignin']);
+Route::post('/signin', ['uses' => 'signinController@signup']);
+
 Route::get('/dashboard', ['uses' => 'signinController@publicIndex']);
+Route::post('/dashboard', ['uses' => 'signinController@login']);
+
 Route::get('/logout', ['uses' => 'DashboardController@logout']);
 
 Route::get('/aboutus', function () {

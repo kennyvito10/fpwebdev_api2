@@ -49,19 +49,20 @@
 						<div class="section_title">Create a new Account</div>
 						<div class="section_subtitle">Already have an account? <a href="signin">Click Here to Sign In</a></div>
 						<div class="contact_form_container">
-							<form action="#" id="contact_form" class="contact_form">
+						{{ Form::open(array('action' => 'signinController@signup')) }}
+						@csrf
 								
 
 								<div class="row">
 									<div class="col-xl-6">
 										<!-- Email -->
 										<label for="contact_name">E-mail*</label>
-										<input type="text" id="email" class="contact_input" required="required">
+										<input type="text" name="email" id="email" class="contact_input" required="required">
 									</div>
 									<div class="col-xl-6 last_name_col">
 										<!-- phone number -->
 										<label for="contact_last_name">Password*</label>
-										<input type="password" id="password" class="contact_input" required="required">
+										<input type="password" name="password" id="password" class="contact_input" required="required">
 									</div>
 								</div>
 
@@ -69,12 +70,12 @@
 									<div class="col-xl-6">
 										<!-- Name -->
 										<label for="contact_name">Name*</label>
-										<input type="text" id="name" class="contact_input" required="required">
+										<input type="text" name="fullName" id="name" class="contact_input" required="required">
 									</div>
 									<div class="col-xl-6 last_name_col">
 										<!-- Last Name -->
 										<label for="contact_last_name">Phone Number*</label>
-										<input type="text" id="number" class="contact_input" required="required">
+										<input type="text" name="phoneNumber" id="number" class="contact_input" required="required">
 									</div>
 								</div>
 
@@ -82,31 +83,31 @@
 									<div class="col-xl-6">
 										<!-- Address Line -->
 										<label for="contact_name">Province*</label>
-										<input type="text" id="province" class="contact_input" required="required">
+										<input type="text" name="province" id="province" class="contact_input" required="required">
 									</div>
 									<div class="col-xl-6 last_name_col">
 										<!-- Street -->
 										<label for="contact_last_name">City*</label>
-										<input type="text" id="city" class="contact_input" required="required">
+										<input type="text" name="city" id="city" class="contact_input" required="required">
 									</div>
 								</div>
 
 								<div>
 									<!-- Address -->
 									<label for="contact_company">Address*</label>
-									<input type="text" id="address" class="contact_input" required="required">
+									<input type="text" name="address" id="address" class="contact_input" required="required">
 								</div>
 
 								<div class="row">
 									<div class="col-xl-6">
 										<!-- Address Line -->
 										<label for="contact_name">Postal Code*</label>
-										<input type="text" id="postalcode" class="contact_input" required="required">
+										<input type="text" name="postalCode" id="postalcode" class="contact_input" required="required">
 									</div>
 									<div class="col-xl-6 last_name_col">
 										<!-- Streetr -->
 										<label for="contact_last_name">Address Note </label>
-										<input type="text" id="note" class="contact_input" >
+										<input type="text" name="notes" id="note" class="contact_input" >
 									</div>
 								</div>
 

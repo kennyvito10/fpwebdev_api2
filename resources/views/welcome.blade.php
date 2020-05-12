@@ -12,7 +12,7 @@
 		<div class="home_slider_container">
 			
 			<!-- Home Slider -->
-			<div class="owl-carousel owl-theme home_slider">
+			<div class="owl-carousel owl-theme home_slider wow bounceInDown">
 				
 				<!-- Slider Item -->
 				<div class="owl-item home_slider_item">
@@ -95,7 +95,7 @@
 
 	<div class="avds">
 		<div class="avds_container d-flex flex-lg-row flex-column align-items-start justify-content-between">
-			<div class="avds_small">
+			<div class="avds_small  wow fadeInLeft">
 				<div class="avds_background" style="background-image:url(assets/iphone11.jpg)"></div>
 				<div class="avds_small_inner">
 					<div class="avds_discount_container">
@@ -113,7 +113,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="avds_large">
+			<div class="avds_large wow fadeInRight">
 				<div class="avds_background" style="background-image:url(assets/oppo.jpg)"></div>
 				<div class="avds_large_container">
 					<div class="avds_large_content">

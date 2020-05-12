@@ -49,12 +49,16 @@
 						<div class="section_title">Sign In</div>
 						<div class="section_subtitle">Don't have an account? Sign Up <a href="signup">Here</a></div>
 						<div class="contact_form_container">
+						@if(session()->has('message'))
+                    					{{ session()->get('message') }}
+                						@endif
 						{{ Form::open(array('action' => 'signinController@login')) }}
 						@csrf
 
 								<div class="row">
 									<div class="col-xl-6">
 										<!-- Email -->
+										
 										<label for="contact_name">E-mail*</label>
 										<input type="text" name="email" id="email" class="contact_input" required="required">
 									</div>
