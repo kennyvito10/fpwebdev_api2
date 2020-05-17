@@ -42,3 +42,10 @@ Route::get('/logout', ['uses' => 'DashboardController@logout']);
 Route::get('/aboutus', function () {
     return view('aboutus');
 });
+Route::get('/aboutusignedin', function () {
+    return view('aboutusignedin');
+});
+
+Route::get('/cart', function () {
+    return view('cart');
+});

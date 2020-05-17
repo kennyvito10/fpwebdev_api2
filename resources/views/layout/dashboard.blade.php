@@ -60,14 +60,15 @@
 											<li><a href="categories.html">Xiaomi</a></li>
 										</ul>
 									</li>
-									<li><a href="#">About Us</a></li>
+									<li><a href="{{ url('/aboutusignedin') }}">About Us</a></li>
 									<li><a href="{{ url('/profile') }}">Profile</a></li>
 									<li><a href="{{ url('/logout') }}"><button class="buttonlogout"><span>Log Out</span></button></a></li>
 								</ul>
 							</nav>
 							<div class="header_extra ml-auto">
 								<div class="shopping_cart">
-									<a href="cart.html">
+									<!-- <a href="{{ url('/product') }}"> -->
+									<a href="{{ url('/cart') }}">
 										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 												 viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve">
 											<g>

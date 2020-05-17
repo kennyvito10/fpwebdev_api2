@@ -12,7 +12,7 @@
 		<div class="home_slider_container">
 			
 			<!-- Home Slider -->
-			<div class="owl-carousel owl-theme home_slider">
+			<div class="owl-carousel owl-theme home_slider  wow bounceInDown">
 				
 				<!-- Slider Item -->
 				<div class="owl-item home_slider_item">
