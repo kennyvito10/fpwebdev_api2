@@ -36,6 +36,24 @@ class signinController extends Controller
         } 
     }
 
+    public function sessioncheckcart(){
+        if (Session::get('login') == FALSE){
+            return view("signin");
+        }
+        else{
+            return view("cart");
+        } 
+    }
+
+    public function sessioncheckaboutus(){
+        if (Session::get('login') == FALSE){
+            return view("aboutus");
+        }
+        else{
+            return view("aboutusignedin");
+        } 
+    }
+
     public function publicIndex()
     {
         if (Session::get('login') == FALSE){

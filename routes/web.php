@@ -39,13 +39,18 @@ Route::post('/dashboard', ['uses' => 'signinController@login']);
 
 Route::get('/logout', ['uses' => 'DashboardController@logout']);
 
-Route::get('/aboutus', function () {
-    return view('aboutus');
-});
-Route::get('/aboutusignedin', function () {
-    return view('aboutusignedin');
-});
+// Route::get('/aboutus', function () {
+//     return view('aboutus');
+// });
+// Route::get('/aboutusignedin', function () {
+//     return view('aboutusignedin');
+// });
 
-Route::get('/cart', function () {
-    return view('cart');
-});
+// Route::get('/cart', function () {
+//     return view('cart');
+// });
+
+Route::get('/aboutus', ['uses' => 'signinController@sessioncheckaboutus']);
+Route::get('/aboutusignedin', ['uses' => 'signinController@sessioncheckaboutus']);
+
+Route::get('/cart', ['uses' => 'signinController@sessioncheckcart']);
