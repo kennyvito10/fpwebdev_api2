@@ -6,55 +6,7 @@
 <link rel="stylesheet" type="text/css" href="styles/cart.css">
 <link rel="stylesheet" type="text/css" href="styles/cart_responsive.css">
 </head>
-<!-- Menu -->
 
-<div class="menu menu_mm trans_300">
-		<div class="menu_container menu_mm">
-			<div class="page_menu_content">
-							
-				<div class="page_menu_search menu_mm">
-					<form action="#">
-						<input type="search" required="required" class="page_menu_search_input menu_mm" placeholder="Search for products...">
-					</form>
-				</div>
-				<ul class="page_menu_nav menu_mm">
-					<li class="page_menu_item has-children menu_mm">
-						<a href="index.html">Home<i class="fa fa-angle-down"></i></a>
-						<ul class="page_menu_selection menu_mm">
-							<li class="page_menu_item menu_mm"><a href="categories.html">Categories<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="product.html">Product<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="cart.html">Cart<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="checkout.html">Checkout<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="contact.html">Contact<i class="fa fa-angle-down"></i></a></li>
-						</ul>
-					</li>
-					<li class="page_menu_item has-children menu_mm">
-						<a href="categories.html">Categories<i class="fa fa-angle-down"></i></a>
-						<ul class="page_menu_selection menu_mm">
-							<li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-						</ul>
-					</li>
-					<li class="page_menu_item menu_mm"><a href="index.html">Accessories<i class="fa fa-angle-down"></i></a></li>
-					<li class="page_menu_item menu_mm"><a href="#">Offers<i class="fa fa-angle-down"></i></a></li>
-					<li class="page_menu_item menu_mm"><a href="contact.html">Contact<i class="fa fa-angle-down"></i></a></li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="menu_close"><i class="fa fa-times" aria-hidden="true"></i></div>
-
-		<div class="menu_social">
-			<ul>
-				<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-				<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-			</ul>
-		</div>
-	</div>
 	
 	<!-- Home -->
 
@@ -68,7 +20,7 @@
 							<div class="home_content">
 								<div class="breadcrumbs">
 									<ul>
-										<li><a href="index.html">Home</a></li>
+										<li><a href="{{url('')}}">Home</a></li>
 										<li>Shopping Cart</li>
 									</ul>
 								</div>
@@ -98,47 +50,92 @@
 			<div class="row cart_items_row">
 				<div class="col">
 
-					<!-- Cart Item -->
-					<div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
-						<!-- Name -->
-						<div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
-							<div class="cart_item_image">
-								<div><img src="images/cart_1.jpg" alt=""></div>
-							</div>
-							<div class="cart_item_name_container">
-								<div class="cart_item_name"><a href="#">Smart Phone Deluxe Edition</a></div>
-								<div class="cart_item_edit"><a href="#">Edit Product</a></div>
-							</div>
+				<?php
+					$totalprice = 0;
+					?>		
+					<?php
+						if($count == 0){
+
+					?>	
+					<p>There is No Items in your Cart</p>
+					<?php
+
+						}else{
+
+						
+					?>
+					
+					
+
+@foreach($da as $d)
+
+
+				<!-- Cart Item -->
+				<div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+					<!-- Name -->
+					<div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
+						<div class="cart_item_image">
+							<div><img src="images/{{$d->imgUrl}}" alt=""></div>
 						</div>
-						<!-- Price -->
-						<div class="cart_item_price">$790.90</div>
-						<!-- Quantity -->
-						<div class="cart_item_quantity">
-							<div class="product_quantity_container">
-								<div class="product_quantity clearfix">
-									<span>Qty</span>
-									<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-									<div class="quantity_buttons">
-										<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
-										<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
-									</div>
-								</div>
-							</div>
+						<div class="cart_item_name_container">
+							<div class="cart_item_name"><a href="/product/{{$d->productid}}">{{$d->productName}}</a></div>
 						</div>
-						<!-- Total -->
-						<div class="cart_item_total">$790.90</div>
 					</div>
+					<!-- Price -->
+					<div class="cart_item_price">Rp. {{$d->price}}</div>
+					<!-- Quantity -->
+					<div class="cart_item_quantity">
+						<div class="product_quantity_container">
+							<div class="product_quantity clearfix" >
+								<span>{{$d->qty}}</span>
+								<!-- <input id="quantity_input" type="text" pattern="[0-9]*" value="1"> -->
+								
+								<!-- <div class="quantity_buttons">
+									<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+									<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+								</div> -->
+							</div>
+						</div>
+					</div>
+					<!-- Total -->
+					<?php
+					$subt = $d->price*$d->qty;
+					$totalprice += $subt;
+					$currentbillid = $d->bill_id;
+					?>
+					<div class="cart_item_total">Rp. {{$subt}}</div>
+				</div>
+
+				@endforeach	
+<?php
+}?>
+
+				
+				
+
+				
+				
+				
 
 				</div>
 			</div>
 			<div class="row row_cart_buttons">
 				<div class="col">
 					<div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
-						<div class="button continue_shopping_button"><a href="#">Continue shopping</a></div>
+						<div class="button continue_shopping_button"><a href="{{url('allproducts')}}">Continue shopping</a></div>
 						<div class="cart_buttons_right ml-lg-auto">
-							<div class="button clear_cart_button"><a href="#">Clear cart</a></div>
-							<div class="button update_cart_button"><a href="#">Update cart</a></div>
-						</div>
+							<div class="button clear_cart_button">
+
+							
+							<a href="
+							
+							<?php if($count == 0){?>/<?php }else{  ?>/deletecart/{{$currentbillid}}<?php }?>
+							
+							
+							">Clear cart</a>
+							
+							
+							</div>						</div>
 					</div>
 				</div>
 			</div>
@@ -150,7 +147,7 @@
 						<div class="section_title">Shipping method</div>
 						<div class="section_subtitle">Select the one you want</div>
 						<div class="delivery_options">
-							<label class="delivery_option clearfix">Next day delivery
+							<!-- <label class="delivery_option clearfix">Next day delivery
 								<input type="radio" name="radio">
 								<span class="checkmark"></span>
 								<span class="delivery_price">$4.99</span>
@@ -159,8 +156,8 @@
 								<input type="radio" name="radio">
 								<span class="checkmark"></span>
 								<span class="delivery_price">$1.99</span>
-							</label>
-							<label class="delivery_option clearfix">Personal pickup
+							</label> -->
+							<label class="delivery_option clearfix">Special Offer Delivery
 								<input type="radio" checked="checked" name="radio">
 								<span class="checkmark"></span>
 								<span class="delivery_price">Free</span>
@@ -169,17 +166,17 @@
 					</div>
 
 					<!-- Coupon Code -->
-					<div class="coupon">
-						<div class="section_title">Coupon code</div>
-						<div class="section_subtitle">Enter your coupon code</div>
-						<div class="coupon_form_container">
-							<form action="#" id="coupon_form" class="coupon_form">
+					<!-- <div class="coupon"> -->
+						<div class="SPACE"><span></span></div>
+						</div>
+						<!-- <div class="coupon_form_container"> -->
+							<!-- <form action="#" id="coupon_form" class="coupon_form">
 								<input type="text" class="coupon_input" required="required">
 								<button class="button coupon_button"><span>Apply</span></button>
-							</form>
-						</div>
-					</div>
-				</div>
+							</form> -->
+						<!-- </div> -->
+					
+				<!-- </div> -->
 
 				<div class="col-lg-6 offset-lg-2">
 					<div class="cart_total">
@@ -189,7 +186,7 @@
 							<ul>
 								<li class="d-flex flex-row align-items-center justify-content-start">
 									<div class="cart_total_title">Subtotal</div>
-									<div class="cart_total_value ml-auto">$790.90</div>
+									<div class="cart_total_value ml-auto">Rp. {{$totalprice}}</div>
 								</li>
 								<li class="d-flex flex-row align-items-center justify-content-start">
 									<div class="cart_total_title">Shipping</div>
@@ -197,11 +194,11 @@
 								</li>
 								<li class="d-flex flex-row align-items-center justify-content-start">
 									<div class="cart_total_title">Total</div>
-									<div class="cart_total_value ml-auto">$790.90</div>
+									<div class="cart_total_value ml-auto">Rp. {{$totalprice}}</div>
 								</li>
 							</ul>
 						</div>
-						<div class="button checkout_button"><a href="#">Proceed to checkout</a></div>
+						<div class="button checkout_button"><a href="{{ url('/checkout') }}">Proceed to checkout</a></div>
 					</div>
 				</div>
 			</div>

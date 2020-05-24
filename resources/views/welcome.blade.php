@@ -24,7 +24,7 @@
 									<div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
 										<div class="home_slider_title">A new experience</div>
 										<div class="home_slider_subtitle">The Best Place to Buy Your New Phone</div>
-										<div class="button button_light home_button"><a href="#">Browse Phones</a></div>
+										<div class="button button_light home_button"><a href="{{ url('/product') }}">Browse Phones</a></div>
 									</div>
 								</div>
 							</div>
@@ -42,7 +42,7 @@
 									<div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
 										<div class="home_slider_title">iPhone 11 Pro</div>
 										<div class="home_slider_subtitle">Available Now.</div>
-										<div class="button button_light home_button"><a href="#">Shop Now</a></div>
+										<div class="button button_light home_button"><a href="{{ url('/apple') }}">Shop Now</a></div>
 									</div>
 								</div>
 							</div>
@@ -60,7 +60,7 @@
 									<div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
 										<div class="home_slider_title">Samsung Galaxy S20</div>
 										<div class="home_slider_subtitle">The Future is Here.</div>
-										<div class="button button_light home_button"><a href="#">Shop Now</a></div>
+										<div class="button button_light home_button"><a href="{{ url('/samsung') }}">Shop Now</a></div>
 									</div>
 								</div>
 							</div>
@@ -109,7 +109,7 @@
 					</div>
 					<div class="avds_small_content">
 						<div class="avds_title">Smart Phones</div>
-						<div class="avds_link"><a href="categories.html">See More</a></div>
+						<div class="avds_link"><a href="{{ url('/product') }}">See More</a></div>
 					</div>
 				</div>
 			</div>
@@ -119,7 +119,7 @@
 					<div class="avds_large_content">
 						<div class="avds_title">Oppo Find X2 Pro</div>
 						<div class="avds_text">With Snapdragon 865 Processor</div>
-						<div class="avds_link avds_link_large"><a href="categories.html">Learn more</a></div>
+						<div class="avds_link avds_link_large"><a href="{{ url('/oppo') }}">Learn more</a></div>
 					</div>
 				</div>
 			</div>

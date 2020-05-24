@@ -6,10 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Sublime project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/contact.css">
-<link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+<link rel="stylesheet" type="text/css" href="{{ url('styles/bootstrap4/bootstrap.min.css') }}">
+<link href="{{ url('plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{{ url('styles/contact.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url('styles/contact_responsive.css') }}">
 </head>
 
 
@@ -17,7 +17,7 @@
 
 <div class="home">
 		<div class="home_container">
-			<div class="home_background" style="background-image:url(assets/samsung.jpg)"></div>
+			<div class="home_background"><img src="{{ url('assets/samsung.jpg') }}" alt="" class = "home_background"></div>
 			<div class="home_content_container">
 				<div class="container">
 					<div class="row">

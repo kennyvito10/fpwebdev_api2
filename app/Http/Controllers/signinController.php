@@ -36,12 +36,13 @@ class signinController extends Controller
         } 
     }
 
-    public function sessioncheckcart(){
+    
+    public function sessioncheckout(){
         if (Session::get('login') == FALSE){
             return view("signin");
         }
         else{
-            return view("cart");
+            return view("checkout");
         } 
     }
 
@@ -54,12 +55,59 @@ class signinController extends Controller
         } 
     }
 
-    public function publicIndex()
+    public function sessioncheckprofile(Request $request){
+        if (Session::get('login') == FALSE){
+            return view("signin");
+        }
+        else{
+
+            $data = DB::table('users')
+            -> join('addresses','addresses.addressid','=','users.addressID')
+            ->where('email',$request->session()->get('email'))
+            -> get();
+            foreach ($data as $dat) {
+                Session::put('id',$dat->id);
+                Session::put('email',$dat->email);
+                Session::put('fullName',$dat->fullName);
+                Session::put('phoneNumber',$dat->phoneNumber);
+                Session::put('addressID',$dat->addressid);
+                Session::put('province',$dat->province);
+                Session::put('city',$dat->city);
+                Session::put('address',$dat->address);
+                Session::put('postalCode',$dat->postalCode);
+                Session::put('notes',$dat->notes);
+                Session::put('login',TRUE);
+
+            }
+            return view("profile");
+        } 
+    }
+
+    public function publicIndex(Request $request)
     {
         if (Session::get('login') == FALSE){
             return Redirect::to("/");
         } 
         else{
+
+            $data = DB::table('users')
+            -> join('addresses','addresses.addressid','=','users.addressID')
+            ->where('email',$request->session()->get('email'))
+            -> get();
+            foreach ($data as $dat) {
+                Session::put('id',$dat->id);
+                Session::put('email',$dat->email);
+                Session::put('fullName',$dat->fullName);
+                Session::put('phoneNumber',$dat->phoneNumber);
+                Session::put('addressID',$dat->addressid);
+                Session::put('province',$dat->province);
+                Session::put('city',$dat->city);
+                Session::put('address',$dat->address);
+                Session::put('postalCode',$dat->postalCode);
+                Session::put('notes',$dat->notes);
+                Session::put('login',TRUE);
+
+            }
 
             return view('dashboard');
         }
@@ -87,7 +135,7 @@ class signinController extends Controller
 
             if(Hash::check($password, $hashedpw)){
             $data = DB::table('users')
-                        -> join('addresses','addresses.id','=','users.addressID')
+                        -> join('addresses','addresses.addressid','=','users.addressID')
                         ->where('email',$request->input("email"))
                         -> get();
             foreach ($data as $dat) {
@@ -95,6 +143,7 @@ class signinController extends Controller
                 Session::put('email',$dat->email);
                 Session::put('fullName',$dat->fullName);
                 Session::put('phoneNumber',$dat->phoneNumber);
+                Session::put('addressID',$dat->addressid);
                 Session::put('province',$dat->province);
                 Session::put('city',$dat->city);
                 Session::put('address',$dat->address);
@@ -137,64 +186,35 @@ class signinController extends Controller
         ]);
 
         return view('/signin');
-		}
+        }
+
+
+    public function updateAppStatus(Request $request, $id){
+        
+            $data = [
+                'email' => $request->input('email'),
+            'fullName' => $request->input('fullName'),
+            'phoneNumber' => $request->input('phoneNumber'),
+            ];
+
+            $adr = [
+                'province' => $request->input('province'),
+                'city' => $request->input('city'),
+                'address' => $request->input('address'),
+                'postalCode' => $request->input('postalCode'),
+                'notes' => $request->input('notes'),
+            
+            ];
+    
+            // if id equals with $id from specific data to be updated
+            Address::where('addressid', $request->session()->get('addressID'))->update($adr);
+            User::where('id',$id)->update($data);
+        
+        
+     return Redirect::to("/dashboard");
+    }
 		
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

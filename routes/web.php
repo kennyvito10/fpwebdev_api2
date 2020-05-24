@@ -17,9 +17,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', ['uses' => 'DashboardController@homeIndex']);
 
 
-Route::get('/product', function () {
-    return view('product');
-});
+
+// Route::get('/apple', function () {
+//     return view('apple');
+// });
+
+Route::get('/apple', ['uses' => 'DashboardController@showproductapple']);
+Route::get('/allproducts', ['uses' => 'DashboardController@showallproducts']);
+Route::get('/product/{productid}', 'DashboardController@showproduct');
+Route::get('/oppo', ['uses' => 'DashboardController@showproductoppo']);
+// Route::get('/oppo', function () {
+//     return view('oppo');
+// });
+
+
 
 
 // Route::get('/signup', function () {
@@ -53,4 +64,10 @@ Route::get('/logout', ['uses' => 'DashboardController@logout']);
 Route::get('/aboutus', ['uses' => 'signinController@sessioncheckaboutus']);
 Route::get('/aboutusignedin', ['uses' => 'signinController@sessioncheckaboutus']);
 
-Route::get('/cart', ['uses' => 'signinController@sessioncheckcart']);
+Route::get('/profile', ['uses' => 'signinController@sessioncheckprofile']);
+// Route::patch('/profile', ['uses' => 'signinController@updatesave']);
+Route::patch('/update/{id}', 'signinController@updateAppStatus');
+
+Route::get('/cart', ['uses' => 'DashboardController@sessioncheckcart']);
+Route::post('/addcart/{productid}', ['uses' => 'DashboardController@addtocart']);
+Route::get('/checkout', ['uses' => 'signinController@sessioncheckout']);

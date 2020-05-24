@@ -5,14 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Sublime project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
-<link rel="stylesheet" type="text/css" href="styles/responsive.css">
-<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" type="text/css" href="{{ url('styles/bootstrap4/bootstrap.min.css') }}">
+<link href="{{ url('plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{{ url('plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url('plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url('plugins/OwlCarousel2-2.2.1/animate.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url('styles/main_styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url('styles/responsive.css') }}">
+
 
 
     <!-- Required meta tags -->
@@ -20,9 +20,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="{{ url('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css') }}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url('//fonts.googleapis.com/css?family=Quicksand') }}" />
+    <link rel="stylesheet" href="{{ url('css/animate.css') }}">
 
     <title>KW Cell</title>
       <!-- bottom content -->
@@ -45,19 +45,19 @@
 										<a href="{{ url('/') }}">Home</a>
 										<ul>
 											<li><a href="categories.html">Categories</a></li>
-											<li><a href="{{ url('/product') }}">Product</a></li>
+											<li><a href="{{ url('/allproducts') }}">Product</a></li>
 											<li><a href="cart.html">Cart</a></li>
 											<li><a href="checkout.html">Check out</a></li>
 											<li><a href="contact.html">Contact</a></li>
 										</ul>
 									</li>
 									<li class="hassubs">
-										<a href="{{ url('/product') }}">Products</a>
+										<a href="{{ url('/allproducts') }}">Products</a>
 										<ul>
-											<li><a href="categories.html">Apple</a></li>
-											<li><a href="categories.html">Samsung</a></li>
-											<li><a href="categories.html">Oppo</a></li>
-											<li><a href="categories.html">Xiaomi</a></li>
+											<li><a href="{{ url('/apple') }}">Apple</a></li>
+											<li><a href="{{ url('/samsung') }}">Samsung</a></li>
+											<li><a href="{{ url('/oppo') }}">Oppo</a></li>
+											<li><a href="{{ url('/xiaomi') }}">Xiaomi</a></li>
 										</ul>
 									</li>
 									<li><a href="{{ url('/aboutus') }}">About Us</a></li>
@@ -140,7 +140,7 @@
 
     <div class="footer_overlay"></div>
 	<footer class="footer">
-		<div class="footer_background" style="background-image:url(images/footer.jpg)"></div>
+		<div class="footer_background" ><img src="{{url('images/footer.jpg')}}" alt="" class="footer_background"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -171,21 +171,21 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script>
       new WOW().init();
     </script>
-    <script src="js/jquery-3.2.1.min.js"></script>
-<script src="styles/bootstrap4/popper.js"></script>
-<script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/greensock/TweenMax.min.js"></script>
-<script src="plugins/greensock/TimelineMax.min.js"></script>
-<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
-<script src="plugins/greensock/animation.gsap.min.js"></script>
-<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
-<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="plugins/Isotope/isotope.pkgd.min.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script src="js/custom.js"></script>
+<script src="{{ url('js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ url('styles/bootstrap4/popper.js') }}"></script>
+<script src="{{ url('styles/bootstrap4/bootstrap.min.js') }}"></script>
+<script src="{{ url('plugins/greensock/TweenMax.min.js') }}"></script>
+<script src="{{ url('plugins/greensock/TimelineMax.min.js') }}"></script>
+<script src="{{ url('plugins/scrollmagic/ScrollMagic.min.js') }}"></script>
+<script src="{{ url('plugins/greensock/animation.gsap.min.js') }}"></script>
+<script src="{{ url('plugins/greensock/ScrollToPlugin.min.js') }}"></script>
+<script src="{{ url('plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
+<script src="{{ url('plugins/Isotope/isotope.pkgd.min.js') }}"></script>
+<script src="{{ url('plugins/easing/easing.js') }}"></script>
+<script src="{{ url('plugins/parallax-js-master/parallax.min.js') }}"></script>
+<script src="{{ url('js/custom.js') }}"></script>
 
-<script src="js/wow.min.js"></script>
+<script src="{{ url('js/wow.min.js') }}"></script>
               <script>
               new WOW().init();
               </script>
