@@ -9,4 +9,6 @@ class Billdetail extends Model
     protected $fillable = [
         'bill_id', 'product_id','qty'
     ];
+
+    protected $primaryKey = 'billdetailid';
 }

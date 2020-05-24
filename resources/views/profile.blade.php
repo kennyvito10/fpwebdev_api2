@@ -62,9 +62,9 @@
 										<input type="text" name="email" id="email" class="contact_input" required="required" readonly="readonly" value="{{ Session::get('email') }}">
 									</div>
 									<div class="col-xl-6 last_name_col">
-										<!-- phone number -->
-										<label for="contact_last_name">Password*</label>
-										<input type="password" name="password" id="password" class="contact_input">
+										<!-- password -->
+										<label for="contact_last_name">Password</label>
+										<input type="password" name="password" id="password" class="contact_input" readonly="readonly" value="000000000000000000000">
 									</div>
 								</div>
 

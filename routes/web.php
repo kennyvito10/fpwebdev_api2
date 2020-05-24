@@ -71,3 +71,6 @@ Route::patch('/update/{id}', 'signinController@updateAppStatus');
 Route::get('/cart', ['uses' => 'DashboardController@sessioncheckcart']);
 Route::post('/addcart/{productid}', ['uses' => 'DashboardController@addtocart']);
 Route::get('/checkout', ['uses' => 'signinController@sessioncheckout']);
+
+Route::delete('/deleteitem/{billdetailid}', ['uses' => 'DashboardController@deleteproductcart']);
+Route::get('/deletecart/{currentbillid}', ['uses' => 'DashboardController@deleteallcart']);

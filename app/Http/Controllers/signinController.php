@@ -114,8 +114,7 @@ class signinController extends Controller
     }
 
     public function login(Request $request){
-        // $users = User::all()->where('email',  $request->input("email"))->where('password', $request->input("password"));
-        // $count = $users->count();
+        
 
         $email = $request->input("email");
         $password = $request->input("password");
@@ -174,7 +173,7 @@ class signinController extends Controller
         $address->save();
 
         // $address->dp_url =  $request->session()->get('dp_urls');
-        $address_id = DB::table('addresses')->get()->last()->id;
+        $address_id = DB::table('addresses')->get()->last()->addressid;
 
         // $request->session()->put('address_ids', $address_ids);
         User::create([

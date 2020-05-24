@@ -59,13 +59,28 @@ class DashboardController extends Controller
                         -> join('products','billdetails.product_id','=','products.productid')
                         ->where('bill_id',$currentbillid)
                         -> get();
+                $countda = $da->count();
         
             }
-            return view('/cart', compact("da","count"));
+            return view('/cart', compact("da","count","countda"));
            
         } 
     
     }
+
+    public function deleteproductcart($billdetail)
+        {
+            Billdetail::destroy($billdetail);
+            return Redirect::to("cart");
+        }
+
+    public function deleteallcart($currentbillid){
+        DB::delete('delete from billdetails where bill_id = ?',[$currentbillid]);
+        DB::delete('delete from bills where billid = ?',[$currentbillid]);
+        return Redirect::to("cart");
+    }
+
+
     public function showallproducts(Product $product)
     {
         $data = DB::table('products')

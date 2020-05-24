@@ -9,4 +9,6 @@ class Bill extends Model
     protected $fillable = [
         'user_id', 'paymentUrl', 'status'
     ];
+
+    protected $primaryKey = 'billid';
 }

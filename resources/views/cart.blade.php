@@ -52,12 +52,15 @@
 
 				<?php
 					$totalprice = 0;
+					$currentbillid = 0;
+					$countda = 1;
 					?>		
 					<?php
 						if($count == 0){
 
+
 					?>	
-					<p>There is No Items in your Cart</p>
+					<h1 style="text-align:center; color:black">There are No Items in your Cart</h1>
 					<?php
 
 						}else{
@@ -75,26 +78,29 @@
 					<!-- Name -->
 					<div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
 						<div class="cart_item_image">
-							<div><img src="images/{{$d->imgUrl}}" alt=""></div>
+							<div><img src="images/{{$d->imgUrl}}" alt="" style="width:150px; height:150px;"></div>
 						</div>
 						<div class="cart_item_name_container">
 							<div class="cart_item_name"><a href="/product/{{$d->productid}}">{{$d->productName}}</a></div>
 						</div>
 					</div>
+
+					<form action="/deleteitem/{{$d->billdetailid}}" method="post" class="d-inline">
+						@method('delete')
+						@csrf
+						<button>Delete</button>
+						</form>
+
+					
 					<!-- Price -->
 					<div class="cart_item_price">Rp. {{$d->price}}</div>
 					<!-- Quantity -->
 					<div class="cart_item_quantity">
 						<div class="product_quantity_container">
-							<div class="product_quantity clearfix" >
-								<span>{{$d->qty}}</span>
-								<!-- <input id="quantity_input" type="text" pattern="[0-9]*" value="1"> -->
+							
+								<span style="color:black">{{$d->qty}}</span>
 								
-								<!-- <div class="quantity_buttons">
-									<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
-									<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
-								</div> -->
-							</div>
+							
 						</div>
 					</div>
 					<!-- Total -->
@@ -106,10 +112,10 @@
 					<div class="cart_item_total">Rp. {{$subt}}</div>
 				</div>
 
+				
 				@endforeach	
 <?php
 }?>
-
 				
 				
 
@@ -124,21 +130,13 @@
 					<div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
 						<div class="button continue_shopping_button"><a href="{{url('allproducts')}}">Continue shopping</a></div>
 						<div class="cart_buttons_right ml-lg-auto">
-							<div class="button clear_cart_button">
-
-							
-							<a href="
-							
-							<?php if($count == 0){?>/<?php }else{  ?>/deletecart/{{$currentbillid}}<?php }?>
-							
-							
-							">Clear cart</a>
-							
-							
-							</div>						</div>
+							<div class="button clear_cart_button"><a href="deletecart/{{$currentbillid}}">Clear cart</a></div>						</div>
 					</div>
 				</div>
 			</div>
+
+			
+
 			<div class="row row_extra">
 				<div class="col-lg-4">
 					
@@ -147,16 +145,6 @@
 						<div class="section_title">Shipping method</div>
 						<div class="section_subtitle">Select the one you want</div>
 						<div class="delivery_options">
-							<!-- <label class="delivery_option clearfix">Next day delivery
-								<input type="radio" name="radio">
-								<span class="checkmark"></span>
-								<span class="delivery_price">$4.99</span>
-							</label>
-							<label class="delivery_option clearfix">Standard delivery
-								<input type="radio" name="radio">
-								<span class="checkmark"></span>
-								<span class="delivery_price">$1.99</span>
-							</label> -->
 							<label class="delivery_option clearfix">Special Offer Delivery
 								<input type="radio" checked="checked" name="radio">
 								<span class="checkmark"></span>
@@ -204,6 +192,7 @@
 			</div>
 		</div>		
 	</div>
+
 
 	
 <script src="js/jquery-3.2.1.min.js"></script>
