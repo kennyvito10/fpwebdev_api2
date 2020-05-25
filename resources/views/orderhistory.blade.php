@@ -40,10 +40,10 @@
 				<div class="col">
 					<!-- Column Titles -->
 					<div class="cart_info_columns clearfix">
-						<div class="cart_info_col cart_info_col_product">Product</div>
-						<div class="cart_info_col cart_info_col_price">Date</div>
+						<div class="cart_info_col cart_info_col_product">Orders</div>
+						<div class="cart_info_col cart_info_col_price">Date & Time</div>
 						<div class="cart_info_col cart_info_col_quantity"></div>
-						<div class="cart_info_col cart_info_col_total">Total</div>
+						<div class="cart_info_col cart_info_col_total"></div>
 					</div>
 				</div>
 			</div>
@@ -85,16 +85,14 @@
 
 					
 					
-
-
-					
-					<!-- Price -->
+					<!-- Date -->
 					<div class="cart_item_price">{{$d->created_at}} </div>
-					<!-- Quantity -->
+					
+					
 					<div class="cart_item_quantity">
 						<div class="product_quantity_container">
 							
-								<span style="color:black">Rp. {{$totalprice}}</span>
+								<span style="color:black"></span>
 								
 							
 						</div>
@@ -132,55 +130,11 @@
 			<div class="row row_extra">
 				<div class="col-lg-4">
 					
-					<!-- Delivery -->
-					<div class="delivery">
-						<div class="section_title">Shipping method</div>
-						<div class="section_subtitle">Select the one you want</div>
-						<div class="delivery_options">
-							<label class="delivery_option clearfix">Special Offer Delivery
-								<input type="radio" checked="checked" name="radio">
-								<span class="checkmark"></span>
-								<span class="delivery_price">Free</span>
-							</label>
-						</div>
-					</div>
+</div>
 
-					<!-- Coupon Code -->
-					<!-- <div class="coupon"> -->
-						<div class="SPACE"><span></span></div>
-						</div>
-						<!-- <div class="coupon_form_container"> -->
-							<!-- <form action="#" id="coupon_form" class="coupon_form">
-								<input type="text" class="coupon_input" required="required">
-								<button class="button coupon_button"><span>Apply</span></button>
-							</form> -->
-						<!-- </div> -->
 					
-				<!-- </div> -->
 
-				<div class="col-lg-6 offset-lg-2">
-					<div class="cart_total">
-						<div class="section_title">Cart total</div>
-						<div class="section_subtitle">Final info</div>
-						<div class="cart_total_container">
-							<ul>
-								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="cart_total_title">Subtotal</div>
-									<div class="cart_total_value ml-auto">Rp. {{$totalprice}}</div>
-								</li>
-								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="cart_total_title">Shipping</div>
-									<div class="cart_total_value ml-auto">Free</div>
-								</li>
-								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="cart_total_title">Total</div>
-									<div class="cart_total_value ml-auto">Rp. {{$totalprice}}</div>
-								</li>
-							</ul>
-						</div>
-						<div class="button checkout_button"><a href="{{ url('/checkout') }}">Proceed to checkout</a></div>
-					</div>
-				</div>
+				
 			</div>
 		</div>		
 	</div>

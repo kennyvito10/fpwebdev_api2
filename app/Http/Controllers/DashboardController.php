@@ -84,16 +84,34 @@ class DashboardController extends Controller
         }
         else{
 
-            $data = DB::table('bills')
-                        -> join('users','users.id','=','bills.user_id')
-                        // -> join('billdetails','billdetails.bill_id','=','bills.billid')
-                        -> join('stats','stats.statusid','=','bills.status')
-                        ->where('bills.user_id',$request->session()->get('id'))
-                        ->where('bills.status', '!=' , 1)
-                        
-                        
-                        -> get();
+            // $data = DB::table('bills')
+            //             -> join('users','users.id','=','bills.user_id')
+            //             // -> join('billdetails','billdetails.bill_id','=','bills.billid')
+            //             -> join('stats','stats.statusid','=','bills.status')
+            //             ->where('bills.user_id',$request->session()->get('id'))
+            //             ->where('bills.status', '!=' , 1)
+            //             -> get();
 
+            $data = DB::table('bills')
+                        ->join('users','users.id','=','bills.user_id')
+                        ->join('stats','stats.statusid','=','bills.status')
+                        ->where('bills.user_id', $request->session()->get('id'))
+                        ->where('bills.status', '!=' , 1)
+                        ->get(["billid",
+                        "user_id",
+                        "paymentUrl",
+                        "status",
+                        "bills.created_at",
+                        "bills.updated_at" ,
+                        "id",
+                        "email",
+                        "password",
+                        "fullName",
+                        "phoneNumber",
+                        "addressID",
+                        "statusid",
+                        "statusname"]);
+            
             $count = $data->count();
             // if($count != 0){
             //     foreach ($data as $d) {
@@ -110,9 +128,9 @@ class DashboardController extends Controller
 
         
             //}
-            return view('/orderhistory', compact("data","count"));
+            return view('/orderhistory', compact("data","count","datacreated"));
             // return view('/orderhistory', compact("data", "da","count","countda"));
-            //dump($data,$da);
+            //dump($data);
             
            
         } 
@@ -316,7 +334,7 @@ class DashboardController extends Controller
         }else{
 
 
-            
+
             return view('/adminloggedin');
         }
         
