@@ -47,7 +47,7 @@
 											<li><a href="{{ url('/allproducts') }}">Product</a></li>
 											<li><a href="{{ url('/cart') }}">Cart</a></li>
 											<li><a href="{{ url('/checkout') }}">Check out</a></li>	
-											<li><a href="{{ url('/orderhistory') }}">Orders</a></li>										</ul>
+																					</ul>
 									</li>
 									<li class="hassubs">
 										<a href="{{ url('/allproducts') }}">Products</a>

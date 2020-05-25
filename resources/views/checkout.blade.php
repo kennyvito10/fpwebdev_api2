@@ -41,34 +41,43 @@
 					<div class="order checkout_section">
 						<div class="section_title">Your order</div>
 						<div class="section_subtitle">Order details</div>
+						<?php
+					$totalprice = 0;
+					
+					?>	
 
 						<!-- Order details -->
 						<div class="order_list_container">
 							<div class="order_list_bar d-flex flex-row align-items-center justify-content-start">
-								<div class="order_list_title">Product</div>
-								<div class="order_list_value ml-auto">Total</div>
+								<div class="order_list_title"></div>
+								<div class="order_list_value ml-auto"></div>
 							</div>
-							<ul class="order_list">
-								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="order_list_title">Cocktail Yellow dress</div>
-									<div class="order_list_value ml-auto">$59.90</div>
-								</li>
+							@foreach($da as $d)
+							
+								<?php
+					$subt = $d->price*$d->qty;
+					$totalprice += $subt;
+					$currentbillid = $d->bill_id;
+					?>
+					@endforeach
 								<li class="d-flex flex-row align-items-center justify-content-start">
 									<div class="order_list_title">Subtotal</div>
-									<div class="order_list_value ml-auto">$59.90</div>
+									<div class="order_list_value ml-auto">Rp. {{$totalprice}}</div>
 								</li>
 								<li class="d-flex flex-row align-items-center justify-content-start">
 									<div class="order_list_title">Shipping</div>
 									<div class="order_list_value ml-auto">Free</div>
 								</li>
+								
 								<li class="d-flex flex-row align-items-center justify-content-start">
 									<div class="order_list_title">Total</div>
-									<div class="order_list_value ml-auto">$59.90</div>
+									<div class="order_list_value ml-auto">Rp. {{$totalprice}}</div>
 								</li>
 							</ul>
 						</div>
 				</div>
 			</div>
+			
 
 			<div class="col-lg-6">
 					<div class="order checkout_section">
@@ -78,10 +87,10 @@
 						<!-- Payment Options -->
 						<div class="payment">
 							<div class="payment_options">
-								<label class="payment_option clearfix">Transfer to Virtual Account
+								<!-- <label class="payment_option clearfix">Transfer to Virtual Account
 									<input type="radio" name="radio">
 									<span class="checkmark"></span>
-								</label>
+								</label> -->
 								<label class="payment_option clearfix">Cash on Delivery
 									<input type="radio" name="radio">
 									<span class="checkmark"></span>
@@ -90,7 +99,7 @@
 						</div>
 
 						<!-- Order Text -->
-						<div class="order_text">*Payments are only in BCA Virtual Account or Cash On Delivery</div>
+						<div class="order_text">*We only Accept Cash On Delivery : <br> Our courier will bring a VISA/MasterCard EDC and you can pay on the spot or apply a 0% Installment</div>
 						<div class="button order_button"><a href="#">Place Order</a></div>
 					</div>
 				</div>				

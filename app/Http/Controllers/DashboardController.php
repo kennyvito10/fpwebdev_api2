@@ -18,6 +18,10 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
+    
     public function homeIndex()
     {
         if (Session::get('login') == FALSE) return view('welcome');
@@ -36,12 +40,6 @@ class DashboardController extends Controller
             return view("signin");
         }
         else{
-            // $daa = DB::table('bills')
-            // -> join('users','users.id','=','bills.user_id')
-            // ->where('user_id',$request->session()->get('id'))
-            // -> join('stats','stats.statusid','=','bills.status')
-            // ->where('status',1)
-            // -> get();
 
             $data = DB::table('bills')
                         -> join('users','users.id','=','bills.user_id')
@@ -80,6 +78,67 @@ class DashboardController extends Controller
         return Redirect::to("cart");
     }
 
+    public function order(Request $request){
+        if (Session::get('login') == FALSE){
+            return view("signin");
+        }
+        else{
+
+            $data = DB::table('bills')
+                        -> join('users','users.id','=','bills.user_id')
+                        // -> join('billdetails','billdetails.bill_id','=','bills.billid')
+                        -> join('stats','stats.statusid','=','bills.status')
+                        ->where('bills.user_id',$request->session()->get('id'))
+                        ->where('bills.status', '!=' , 1)
+                        
+                        
+                        -> get();
+
+            $count = $data->count();
+            // if($count != 0){
+            //     foreach ($data as $d) {
+            //         $currentbillid = $d->billid;
+            //         $da = DB::table('billdetails')
+            //                 -> join('products','billdetails.product_id','=','products.productid')
+            //                 -> join('bills','bills.billid','=','billdetails.bill_id')
+            //                 ->where('bill_id',$currentbillid)
+            //                 -> get();
+
+            //         $countda = $da->count();
+
+            //     }
+
+        
+            //}
+            return view('/orderhistory', compact("data","count"));
+            // return view('/orderhistory', compact("data", "da","count","countda"));
+            //dump($data,$da);
+            
+           
+        } 
+    }
+
+
+    public function showhistory($historyid){
+        if (Session::get('login') == FALSE){
+            return view("signin");
+        }
+        else{
+
+            
+
+                $da = DB::table('billdetails')
+                        -> join('products','billdetails.product_id','=','products.productid')
+                        ->where('bill_id',$historyid)
+                        -> get();
+                $countda = $da->count();
+        
+            
+            return view('/history', compact("da","countda"));
+           
+        } 
+    }
+
 
     public function showallproducts(Product $product)
     {
@@ -101,10 +160,19 @@ class DashboardController extends Controller
                         ->where('brandid',1)
                         -> get();
         $count = $data->count();
-            // foreach ($data as $dat) {
-            //     Session::put('id',$dat->id);
-            // }
+            
         return view('/apple', compact("data","count"));
+    }
+
+    public function showproductsamsung(Product $product)
+    {
+        $data = DB::table('products')
+                        -> join('brands','brands.brandid','=','products.brand_id')
+                        ->where('brandid',2)
+                        -> get();
+        $count = $data->count();
+            
+        return view('/samsung', compact("data","count"));
     }
 
     public function showproductoppo(Product $product)
@@ -114,10 +182,19 @@ class DashboardController extends Controller
                         ->where('brandid',3)
                         -> get();
         $count = $data->count();
-            // foreach ($data as $dat) {
-            //     Session::put('id',$dat->id);
-            // }
+            
         return view('/oppo', compact("data","count"));
+    }
+
+    public function showproductxiaomi(Product $product)
+    {
+        $data = DB::table('products')
+                        -> join('brands','brands.brandid','=','products.brand_id')
+                        ->where('brandid',4)
+                        -> get();
+        $count = $data->count();
+            
+        return view('/samsung', compact("data","count"));
     }
 
     public function showproduct($productid){
@@ -203,6 +280,49 @@ class DashboardController extends Controller
         return Redirect::to('/cart');
             }
     }
+
+    public function sessioncheckout(Request $request){
+        if (Session::get('login') == FALSE){
+            return view("signin");
+        }
+        else{
+            $data = DB::table('bills')
+                        -> join('users','users.id','=','bills.user_id')
+                        -> join('stats','stats.statusid','=','bills.status')
+                        ->where('bills.user_id',$request->session()->get('id'))
+                        ->where('bills.status',1)
+                        -> get();
+            $count = $data->count();
+            if($count != 0){
+                foreach ($data as $d) {
+                    $currentbillid = $d->billid;
+                }
+
+                $da = DB::table('billdetails')
+                        -> join('products','billdetails.product_id','=','products.productid')
+                        ->where('bill_id',$currentbillid)
+                        -> get();
+                $countda = $da->count();
+        
+            }
+            return view('/checkout', compact("da","count","countda"));
+        } 
+    }
+
+    public function adminlogged()
+    {
+        if (!Session::get('admlogin')){
+            return view('/admin');
+        }else{
+
+
+            
+            return view('/adminloggedin');
+        }
+        
+    }
+
+   
 
 
 

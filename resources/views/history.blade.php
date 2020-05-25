@@ -3,8 +3,8 @@
 @section('container')
 
 <head>
-<link rel="stylesheet" type="text/css" href="styles/cart.css">
-<link rel="stylesheet" type="text/css" href="styles/cart_responsive.css">
+<link rel="stylesheet" type="text/css" href="{{url('styles/cart.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url('styles/cart_responsive.css')}}">
 </head>
 
 	
@@ -12,7 +12,7 @@
 
 	<div class="home">
 		<div class="home_container">
-			<div class="home_background" style="background-image:url(images/cart.jpg)"></div>
+			<div class="home_background"><img src="{{url('images/cart.jpg')}}" alt="" class="home_background"></div>
 			<div class="home_content_container">
 				<div class="container">
 					<div class="row">
@@ -53,10 +53,9 @@
 				<?php
 					$totalprice = 0;
 					$currentbillid = 0;
-					$countda = 1;
 					?>		
 					<?php
-						if($count == 0){
+						if($countda == 0){
 
 
 					?>	
@@ -78,15 +77,10 @@
 					<!-- Name -->
 					<div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
 						<div class="cart_item_image">
-							<div><img src="images/{{$d->imgUrl}}" alt="" style="width:150px; height:150px;"></div>
+							<div><img src="{{ url('images/'.$d->imgUrl.'') }}" alt="" style="width:150px; height:150px;"></div>
 						</div>
 						<div class="cart_item_name_container">
 							<div class="cart_item_name"><a href="/product/{{$d->productid}}">{{$d->productName}}</a></div>
-							<form action="/deleteitem/{{$d->billdetailid}}" method="post" class="d-inline">
-						@method('delete')
-						@csrf
-						<button class="bbutton">Delete</button>
-						</form>
 						</div>
 					</div>
 
@@ -130,8 +124,7 @@
 				<div class="col">
 					<div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
 						<div class="button continue_shopping_button"><a href="{{url('allproducts')}}">Continue shopping</a></div>
-						<div class="cart_buttons_right ml-lg-auto">
-							<div class="button clear_cart_button"><a href="deletecart/{{$currentbillid}}">Clear cart</a></div>						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -139,33 +132,7 @@
 			
 
 			<div class="row row_extra">
-				<div class="col-lg-4">
-					
-					<!-- Delivery -->
-					<div class="delivery">
-						<div class="section_title">Shipping method</div>
-						<div class="section_subtitle">Select the one you want</div>
-						<div class="delivery_options">
-							<label class="delivery_option clearfix">Special Offer Delivery
-								<input type="radio" checked="checked" name="radio">
-								<span class="checkmark"></span>
-								<span class="delivery_price">Free</span>
-							</label>
-						</div>
-					</div>
-
-					<!-- Coupon Code -->
-					<!-- <div class="coupon"> -->
-						<div class="SPACE"><span></span></div>
-						</div>
-						<!-- <div class="coupon_form_container"> -->
-							<!-- <form action="#" id="coupon_form" class="coupon_form">
-								<input type="text" class="coupon_input" required="required">
-								<button class="button coupon_button"><span>Apply</span></button>
-							</form> -->
-						<!-- </div> -->
-					
-				<!-- </div> -->
+				
 
 				<div class="col-lg-6 offset-lg-2">
 					<div class="cart_total">
@@ -187,7 +154,7 @@
 								</li>
 							</ul>
 						</div>
-						<div class="button checkout_button"><a href="{{ url('/checkout') }}">Proceed to checkout</a></div>
+						
 					</div>
 				</div>
 			</div>

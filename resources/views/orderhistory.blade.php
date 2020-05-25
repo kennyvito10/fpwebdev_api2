@@ -41,8 +41,8 @@
 					<!-- Column Titles -->
 					<div class="cart_info_columns clearfix">
 						<div class="cart_info_col cart_info_col_product">Product</div>
-						<div class="cart_info_col cart_info_col_price">Price</div>
-						<div class="cart_info_col cart_info_col_quantity">Quantity</div>
+						<div class="cart_info_col cart_info_col_price">Date</div>
+						<div class="cart_info_col cart_info_col_quantity"></div>
 						<div class="cart_info_col cart_info_col_total">Total</div>
 					</div>
 				</div>
@@ -60,7 +60,7 @@
 
 
 					?>	
-					<h1 style="text-align:center; color:black">There are No Items in your Cart</h1>
+					<h1 style="text-align:center; color:black">There are No Orders</h1>
 					<?php
 
 						}else{
@@ -69,54 +69,46 @@
 					?>
 					
 					
-
-@foreach($da as $d)
+@foreach($data as $d)
+							
 
 
 				<!-- Cart Item -->
 				<div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
 					<!-- Name -->
 					<div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
-						<div class="cart_item_image">
-							<div><img src="images/{{$d->imgUrl}}" alt="" style="width:150px; height:150px;"></div>
-						</div>
+						
 						<div class="cart_item_name_container">
-							<div class="cart_item_name"><a href="/product/{{$d->productid}}">{{$d->productName}}</a></div>
-							<form action="/deleteitem/{{$d->billdetailid}}" method="post" class="d-inline">
-						@method('delete')
-						@csrf
-						<button class="bbutton">Delete</button>
-						</form>
+							<div class="cart_item_name"><a href="/history/{{$d->billid}}">Order</a></div>
 						</div>
 					</div>
 
 					
+					
+
 
 					
 					<!-- Price -->
-					<div class="cart_item_price">Rp. {{$d->price}}</div>
+					<div class="cart_item_price">{{$d->created_at}} </div>
 					<!-- Quantity -->
 					<div class="cart_item_quantity">
 						<div class="product_quantity_container">
 							
-								<span style="color:black">{{$d->qty}}</span>
+								<span style="color:black">Rp. {{$totalprice}}</span>
 								
 							
 						</div>
 					</div>
 					<!-- Total -->
-					<?php
-					$subt = $d->price*$d->qty;
-					$totalprice += $subt;
-					$currentbillid = $d->bill_id;
-					?>
-					<div class="cart_item_total">Rp. {{$subt}}</div>
+					
+					
 				</div>
 
-				
 				@endforeach	
+				
 <?php
 }?>
+				
 				
 				
 
@@ -130,8 +122,7 @@
 				<div class="col">
 					<div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
 						<div class="button continue_shopping_button"><a href="{{url('allproducts')}}">Continue shopping</a></div>
-						<div class="cart_buttons_right ml-lg-auto">
-							<div class="button clear_cart_button"><a href="deletecart/{{$currentbillid}}">Clear cart</a></div>						</div>
+						
 					</div>
 				</div>
 			</div>

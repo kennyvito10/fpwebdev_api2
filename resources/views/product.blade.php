@@ -13,14 +13,14 @@
 
 	<div class="home">
 		<div class="home_container">
-			<div class="home_background" ><img src="{{url('images/categories.jpg')}}" alt="" class="home_background"></div>
+			<div class="home_background" ><img src="{{url('images/categories.jpg')}}" alt="" class="home_background" ></div>
 			<div class="home_content_container">
 				<div class="container">
 					<div class="row">
 						<div class="col">
 							<div class="home_content">
 								<div class="home_title">Smart Phones<span>.</span></div>
-								<div class="home_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</p></div>
+								<div class="home_text"><p></p></div>
 							</div>
 						</div>
 					</div>
@@ -73,21 +73,13 @@
 							</div>
 							<!-- <div class="button cart_button"> -->
 							<!-- <a href="/addcart/{{$d->productid}}">Add to cart</a> -->
-							<button class="button cart_button" type="submit">Add To Cart</button>
+							<button class="buttonn" type="submit">Add To Cart</button>
 							</form>
 							<!-- </div> -->
 						</div>
 
 						<!-- Share -->
-						<div class="details_share">
-							<span>Share:</span>
-							<ul>
-							
-								<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-							</ul>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -122,7 +114,7 @@
 					@foreach($related_data as $da)
 						<!-- Product -->
 						<div class="product">
-							<div class="product_image"><img src="{{ url('images/'.$da->imgUrl.'') }}" alt=""></div>
+							<div class="product_image"><img src="{{ url('images/'.$da->imgUrl.'') }}" alt="" style="width:200px;height:200px"></div>
 							<div class="product_content">
 								<div class="product_title"><a href="/product/{{$da->productid}}">{{$da->productName}}</a></div>
 								<div class="product_price">Rp. {{$da->price}}</div>

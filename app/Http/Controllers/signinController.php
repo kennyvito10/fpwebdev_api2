@@ -37,14 +37,7 @@ class signinController extends Controller
     }
 
     
-    public function sessioncheckout(){
-        if (Session::get('login') == FALSE){
-            return view("signin");
-        }
-        else{
-            return view("checkout");
-        } 
-    }
+    
 
     public function sessioncheckaboutus(){
         if (Session::get('login') == FALSE){
@@ -212,7 +205,25 @@ class signinController extends Controller
         
      return Redirect::to("/dashboard");
     }
-		
+
+
+
+    public function admin(Request $request){
+        $us = $request->input("adminuser");
+        $pass = $request->input("pw");
+
+        if($us == 'admin' and $pass == 'admin'){
+            Session::put('admlogin',TRUE);
+            return view("/adminloggedin");        }
+        else{
+            return Redirect::to(URL::previous())->with('message', 'Invalid  and or Passwords');
+        }
+
+            
+    }
+
+    
+    
 
 
     /**

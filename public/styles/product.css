@@ -237,6 +237,17 @@ section
 	overflow: hidden;
 	cursor: pointer;
 }
+.buttonn
+{
+	width: 178px;
+	height: 61px;
+	background: none;
+	text-align: center;
+	border: solid 2px #1b1b1b;
+	overflow: hidden;
+	cursor: pointer;
+}
+
 .button a
 {
 	display: block;
