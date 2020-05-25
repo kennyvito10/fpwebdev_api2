@@ -227,7 +227,7 @@ section
 }
 .button
 {
-	width: 178px;
+	width: 160px;
 	height: 61px;
 	background: none;
 	text-align: center;
@@ -235,6 +235,18 @@ section
 	overflow: hidden;
 	cursor: pointer;
 }
+.buttoon
+{
+	margin-top: 40px;
+	width: 450px;
+	height: 61px;
+	background: none;
+	text-align: center;
+	border: solid 2px #1b1b1b;
+	overflow: hidden;
+	cursor: pointer;
+}
+
 .button a
 {
 	display: block;

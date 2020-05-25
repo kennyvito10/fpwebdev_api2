@@ -42,7 +42,7 @@
 					<div class="cart_info_columns clearfix">
 						<div class="cart_info_col cart_info_col_product">Orders</div>
 						<div class="cart_info_col cart_info_col_price">Date & Time</div>
-						<div class="cart_info_col cart_info_col_quantity"></div>
+						<div class="cart_info_col cart_info_col_quantity">Status</div>
 						<div class="cart_info_col cart_info_col_total"></div>
 					</div>
 				</div>
@@ -92,7 +92,7 @@
 					<div class="cart_item_quantity">
 						<div class="product_quantity_container">
 							
-								<span style="color:black"></span>
+								<span style="color:black">{{$d->statusname}}</span>
 								
 							
 						</div>

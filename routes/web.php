@@ -60,15 +60,12 @@ Route::get('/admin', function () {
     return view('admin');
 });
 Route::get('/adminloggedin', ['uses' => 'DashboardController@adminlogged']);
-// Route::get('/adminloggedin', function () {
-//     return view('adminloggedin');
-// });
+Route::post('/adminredirect', ['uses' => 'signinController@admin']);
 
-Route::post('/adminloggedin', ['uses' => 'signinController@admin']);
+Route::patch('/updatestatusordered/{id}', 'DashboardController@checkoutorder');
+Route::patch('/updatestatusdelivered/{id}', 'DashboardController@updateAdminStatusDelivered');
+Route::patch('/updatestatusfinished/{id}', 'DashboardController@updateAdminStatusFinished');
 
-// Route::get('/cart', function () {
-//     return view('cart');
-// });
 
 Route::get('/aboutus', ['uses' => 'signinController@sessioncheckaboutus']);
 Route::get('/aboutusignedin', ['uses' => 'signinController@sessioncheckaboutus']);

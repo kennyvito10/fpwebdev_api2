@@ -52,6 +52,9 @@
 								<div class="order_list_title"></div>
 								<div class="order_list_value ml-auto"></div>
 							</div>
+							<?php
+							if($count != 0 ){
+							?>
 							@foreach($da as $d)
 							
 								<?php
@@ -60,7 +63,9 @@
 					$currentbillid = $d->bill_id;
 					?>
 					@endforeach
-								<li class="d-flex flex-row align-items-center justify-content-start">
+
+
+					<li class="d-flex flex-row align-items-center justify-content-start">
 									<div class="order_list_title">Subtotal</div>
 									<div class="order_list_value ml-auto">Rp. {{$totalprice}}</div>
 								</li>
@@ -74,6 +79,8 @@
 									<div class="order_list_value ml-auto">Rp. {{$totalprice}}</div>
 								</li>
 							</ul>
+							
+								
 						</div>
 				</div>
 			</div>
@@ -100,10 +107,26 @@
 
 						<!-- Order Text -->
 						<div class="order_text">*We only Accept Cash On Delivery : <br> Our courier will bring a VISA/MasterCard EDC and you can pay on the spot or apply a 0% Installment</div>
-						<div class="button order_button"><a href="#">Place Order</a></div>
+						
+							<form method="post" action="updatestatusordered/{{$currentbillid}}" style="display:inline-block">
+                                @method('patch')
+                                @csrf  
+                                <button type="submit" class="buttoon">Order</button></a>
+      
+                              </form>
+						
 					</div>
 				</div>				
 			</div>
+			<?php
+							}
+							else{
+							?>
+					<p>You have no items to Checkout</p>
+					<?php
+							}
+					?>
+
 		</div>
 	</div>
 

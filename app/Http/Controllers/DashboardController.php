@@ -327,88 +327,105 @@ class DashboardController extends Controller
         } 
     }
 
+    public function checkoutorder(Request $request, $id){
+        $data = [
+            'status' => 2,
+        ];
+        Bill::where('billid',$id)->update($data);
+    
+    
+ return Redirect::to("/dashboard");
+}
+
     public function adminlogged()
     {
         if (!Session::get('admlogin')){
             return view('/admin');
         }else{
 
+            $data = DB::table('bills')
+                        -> join('users','users.id','=','bills.user_id')
+                        -> join('stats','stats.statusid','=','bills.status')
+                        ->where('bills.status',2)
+                        ->get(["billid",
+                        "user_id",
+                        "paymentUrl",
+                        "status",
+                        "bills.created_at",
+                        "bills.updated_at" ,
+                        "id",
+                        "email",
+                        "password",
+                        "fullName",
+                        "phoneNumber",
+                        "addressID",
+                        "statusid",
+                        "statusname"]);
 
+            $datadelivered = DB::table('bills')
+            -> join('users','users.id','=','bills.user_id')
+            -> join('stats','stats.statusid','=','bills.status')
+            ->where('bills.status',3)
+            ->get(["billid",
+            "user_id",
+            "paymentUrl",
+            "status",
+            "bills.created_at",
+            "bills.updated_at" ,
+            "id",
+            "email",
+            "password",
+            "fullName",
+            "phoneNumber",
+            "addressID",
+            "statusid",
+            "statusname"]);
 
-            return view('/adminloggedin');
+            $datafinished = DB::table('bills')
+                        -> join('users','users.id','=','bills.user_id')
+                        -> join('stats','stats.statusid','=','bills.status')
+                        ->where('bills.status',4)
+                        ->get(["billid",
+                        "user_id",
+                        "paymentUrl",
+                        "status",
+                        "bills.created_at",
+                        "bills.updated_at" ,
+                        "id",
+                        "email",
+                        "password",
+                        "fullName",
+                        "phoneNumber",
+                        "addressID",
+                        "statusid",
+                        "statusname"]);
+
+            return view('/adminloggedin', compact("data","datadelivered","datafinished"));
+            //dump($data);
         }
         
     }
 
-   
+
+    public function updateAdminStatusDelivered(Request $request, $id){
+        $data = [
+            'status' => 3,
+        ];
+        Bill::where('billid',$id)->update($data);
+    
+    
+ return Redirect::to("/adminloggedin");
+}
+
+public function updateAdminStatusFinished(Request $request, $id){
+    $data = [
+        'status' => 4,
+    ];
+    Bill::where('billid',$id)->update($data);
 
 
+return Redirect::to("/adminloggedin");
+}
 
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

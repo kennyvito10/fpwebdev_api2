@@ -20,73 +20,138 @@
   <a href="{{ url('/logout') }}"><button  class="btn btn-primary">Logout</button></a>
   <div id="main_content">
 
- <li class="selected" id="page1" onclick="change_tab(this.id);">Page1</li>
- <li class="notselected" id="page2" onclick="change_tab(this.id);">Page2</li>
- <li class="notselected" id="page3" onclick="change_tab(this.id);">Page3</li>
+ <li class="selected" id="page1" onclick="change_tab(this.id);">Ordered</li>
+ <li class="notselected" id="page2" onclick="change_tab(this.id);">Delivered</li>
+ <li class="notselected" id="page3" onclick="change_tab(this.id);">Finished</li>
  
  <div class='hidden_desc' id="page1_desc">
  <table class="table table-borderless">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-      <th scope="col">Handle</th>
+    <th scope="col">Bill Id </th>
+      <th scope="col">Customer Name</th>
+      <th scope="col">Customer Id</th>
+      <th scope="col">Status</th>
+      <th scope="col">Date And Time</th>
+      <th scope="col">Edit</th>
+
+      <!-- <th scope="col">Date</th> -->
     </tr>
   </thead>
   <tbody>
+  @foreach($data as $d)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+      <th scope="row">{{$d->billid}}</th>
+      <td>{{$d->fullName}}</td>
+      <td>{{$d->user_id}}</td>
+      <td>{{$d->statusname}}</td>
+      <td>{{$d->created_at}}</td>
+      <td>
+      <form method="post" action="updatestatusdelivered/{{$d->billid}}" style="display:inline-block">
+                                @method('patch')
+                                @csrf  
+                                <button type="submit" class="btn btn-primary">Deliver</button></a>
+      
+                              </form></td>
     </tr>
+    @endforeach
+    
   </tbody>
 </table>
 </div>
 
  <div class='hidden_desc' id="page2_desc">
-  <h2>Page 2</h2>
-  Hello this is Page 2 description and this is just a sample text .This is the demo of Multiple Tab In Single Page Using JavaScript and CSS.
- </div>
+ <table class="table table-borderless">
+  <thead>
+    <tr>
+    <th scope="col">Bill Id </th>
+      <th scope="col">Customer Name</th>
+      <th scope="col">Customer Id</th>
+      <th scope="col">Status</th>
+      <th scope="col">Date And Time</th>
+      <th scope="col">Edit</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  @foreach($datadelivered as $d)
+    <tr>
+      <th scope="row">{{$d->billid}}</th>
+      <td>{{$d->fullName}}</td>
+      <td>{{$d->user_id}}</td>
+      <td>{{$d->statusname}}</td>
+      <td>{{$d->created_at}}</td>
+      <td>
+      <form method="post" action="updatestatusfinished/{{$d->billid}}" style="display:inline-block">
+                                @method('patch')
+                                @csrf  
+                                <button type="submit" class="btn btn-primary">Finish</button></a>
+      
+                              </form></td>
+    </tr>
+    @endforeach
+    
+  </tbody>
+</table></div>
  
  <div class='hidden_desc' id="page3_desc">
-  <h2>Page 3</h2>
-  Hello this is Page 3 description and this is just a sample text .This is the demo of Multiple Tab In Single Page Using JavaScript and CSS. 
-  Hello this is Page 3 description and this is just a sample text .This is the demo of Multiple Tab In Single Page Using JavaScript and CSS.
+ <table class="table table-borderless">
+  <thead>
+    <tr>
+    <th scope="col">Bill Id </th>
+      <th scope="col">Customer Name</th>
+      <th scope="col">Customer Id</th>
+      <th scope="col">Status</th>
+      <th scope="col">Date And Time</th>
 
+    </tr>
+  </thead>
+  <tbody>
+  @foreach($datafinished as $d)
+    <tr>
+      <th scope="row">{{$d->billid}}</th>
+      <td>{{$d->fullName}}</td>
+      <td>{{$d->user_id}}</td>
+      <td>{{$d->statusname}}</td>
+      <td>{{$d->created_at}}</td>
+      
+    @endforeach
+    
+  </tbody>
+</table>
 </div>
  
  <div id="page_content">
  <table class="table table-borderless">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+    <th scope="col">Bill Id </th>
+      <th scope="col">Customer Name</th>
+      <th scope="col">Customer Id</th>
+      <th scope="col">Status</th>
+      <th scope="col">Date And Time</th>
+      <th scope="col">Edit</th>
+
     </tr>
   </thead>
   <tbody>
+  @foreach($data as $d)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row">{{$d->billid}}</th>
+      <td>{{$d->fullName}}</td>
+      <td>{{$d->user_id}}</td>
+      <td>{{$d->statusname}}</td>
+      <td>{{$d->created_at}}</td>
+      <td>
+      <form method="post" action="updatestatusdelivered/{{$d->billid}}" style="display:inline-block">
+                                @method('patch')
+                                @csrf  
+                                <button type="submit" class="btn btn-primary">Deliver</button></a>
+      
+                              </form></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    @endforeach
+    
   </tbody>
 </table>
  </div>

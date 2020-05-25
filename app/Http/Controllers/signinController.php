@@ -214,7 +214,7 @@ class signinController extends Controller
 
         if($us == 'admin' and $pass == 'admin'){
             Session::put('admlogin',TRUE);
-            return view("/adminloggedin");        }
+            return view("/adminredirect");        }
         else{
             return Redirect::to(URL::previous())->with('message', 'Invalid  and or Passwords');
         }

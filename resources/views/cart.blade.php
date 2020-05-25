@@ -114,9 +114,7 @@
 				</div>
 
 				
-				@endforeach	
-<?php
-}?>
+				
 				
 				
 
@@ -190,6 +188,10 @@
 						<div class="button checkout_button"><a href="{{ url('/checkout') }}">Proceed to checkout</a></div>
 					</div>
 				</div>
+
+				@endforeach	
+<?php
+}?>
 			</div>
 		</div>		
 	</div>
