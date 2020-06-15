@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBilldetailsTable extends Migration
+class UpdateUsersTableAddApiTokenField extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateBilldetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('billdetails', function (Blueprint $table) {
-            $table->increments('billdetailid');
-            $table->integer('bill_id');
-            $table->integer('product_id');
-            $table->integer('qty');
-            $table->timestamps();
+        Schema::table('users', function(Blueprint $table)
+        {
+            $table->string('api_token')->after('addressID');
         });
     }
 
@@ -29,6 +26,9 @@ class CreateBilldetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('billdetails');
+        Schema::table('users', function(Blueprint $table)
+        {
+            $table->dropColumn('api_token');
+        });
     }
 }

@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/auth/signup','AuthController@signup');
+Route::post('/auth/login','AuthController@login');
+Route::get('/auth/getUserToken','AuthController@getUserToken');
+Route::get('/auth/seeprofile','AuthController@seeprofile');
+Route::get('/auth/viewuser/{id}','AuthController@viewuser');
+Route::patch('/auth/updateprofile','AuthController@updateprofile');
+Route::get('/auth/loginadmin','AuthController@loginadmin');
